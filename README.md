@@ -78,8 +78,8 @@ Caelum runs as a distributed microservices architecture orchestrated via Docker 
 ## ⚙️ 3. Prerequisites & Environment Variables
 
 ### Prerequisites
-- [Docker](https://www.docker.com/) & [Docker Compose](https://docs.docker.com/compose/) (v2.0+)
-- [Google Gemini API Key](https://aistudio.google.com/) (required for `caelum-agent`)
+- Docker & Docker Compose
+- Google Gemini API Key (required for `caelum-agent`)
 
 ### Environment Configuration (`.env`)
 Create a `.env` file in the project root directory:
@@ -177,7 +177,7 @@ curl -X POST "http://localhost:8000/api/v1/sky/seed" \
 Calculates visible celestial bodies for a given observer location and timestamp.
 
 ```bash
-curl "http://localhost:8000/api/v1/sky/view?lat=41.9028&lon=12.4964"
+curl "http://localhost:8000/api/v1/sky/view?lat=48.8566&lon=2.3522°"
 ```
 
 **Response Example (`200 OK`):**
@@ -185,8 +185,8 @@ curl "http://localhost:8000/api/v1/sky/view?lat=41.9028&lon=12.4964"
 {
   "success": true,
   "observer": {
-    "latitude": 41.9028,
-    "longitude": 12.4964,
+    "latitude": 48.8566,
+    "longitude": 2.3522°,
     "timestamp": "2026-06-06T12:00:00.000Z"
   },
   "visible_objects": [
@@ -219,8 +219,8 @@ curl -X POST "http://localhost:8000/api/v1/sky/action" \
   -H "Content-Type: application/json" \
   -d '{
     "action": "get_visible_objects",
-    "latitude": 41.9028,
-    "longitude": 12.4964,
+    "latitude": 48.8566,
+    "longitude": 2.3522°,
     "include_planets": true,
     "include_stars": true
   }'
@@ -232,8 +232,8 @@ curl -X POST "http://localhost:8000/api/v1/sky/action" \
   -H "Content-Type: application/json" \
   -d '{
     "action": "get_object_details",
-    "latitude": 41.9028,
-    "longitude": 12.4964,
+    "latitude": 48.8566,
+    "longitude": 2.3522°,
     "object_name": "Mars"
   }'
 ```
@@ -244,8 +244,8 @@ curl -X POST "http://localhost:8000/api/v1/sky/action" \
   -H "Content-Type: application/json" \
   -d '{
     "action": "get_object_history",
-    "latitude": 41.9028,
-    "longitude": 12.4964,
+    "latitude": 48.8566,
+    "longitude": 2.3522°,
     "object_name": "Moon"
   }'
 ```
@@ -277,10 +277,8 @@ caelum-sky-observer-agent/
 ├── README.md                               # Project documentation
 ├── .env.example                            # Environment variables template
 ├── .gitignore                              # Git exclusion rules
-├── docs/
-│   └── images/                             # UI screenshots & diagrams
-│       ├── ui-dashboard.png
-│       └── ui-dome-3d.png
+├── figures/                               # UI screenshots & diagrams
+│       ├── caelum_dashboard.png
 └── services/
     ├── frontend/                           # React + Vite + Tailwind frontend
     │   ├── Dockerfile
