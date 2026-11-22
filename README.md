@@ -186,7 +186,7 @@ curl "http://localhost:8000/api/v1/sky/view?lat=48.8566&lon=2.3522°"
   "success": true,
   "observer": {
     "latitude": 48.8566,
-    "longitude": 2.3522°,
+    "longitude": 2.3522,
     "timestamp": "2026-06-06T12:00:00.000Z"
   },
   "visible_objects": [
