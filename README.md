@@ -11,10 +11,10 @@ Caelum is a modern, enterprise-grade **microservices-based** astronomical observ
 Caelum bridges astronomical observation with space exploration history and AI-driven narrative storytelling. It is designed around strict domain constraints: **natural celestial bodies only** (no artificial satellites or space debris) and **structured agent interactions** (no free-text chat vulnerabilities; all interactions use validated schema actions).
 
 ### Screenshots / UI Preview
-| Main Observation Dashboard |
-| :------------------------: |
-| ![Main Observation Dashboard](path/to/image.png) |
-| *Sidebar with category filters (`planet`, `star`, `deep_sky`, `constellation`), timestamp & coordinate pickers.* |
+|                                            Main Observation Dashboard                                            |
+|:----------------------------------------------------------------------------------------------------------------:|
+|                           ![Main Observation Dashboard](figures/caelum_dashboard.png)                            |
+| *Interactive 3D alt-azimuth sky dome paired with a category-filtered sidebar (`planet`, `star`, `deep_sky`, `constellation`), observer coordinate & timestamp controls, and a real-time AI narration panel.* |
 
 - **Sidebar & Filters**: Quick access to categorized visible celestial objects with altitude/azimuth badges.
 - **3D Celestial Dome**: Immersive altazimuth dome rendering natural celestial bodies in real-time.

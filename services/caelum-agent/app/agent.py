@@ -449,24 +449,22 @@ class CaelumAgent:
         constellations = [o for o in visible_objects if o.get("category") == "constellation"]
 
         prompt = f"""
-        You are an astronomical assistant. Create a beautiful, engaging narration 
-        about the visible celestial objects for a user at latitude {location[0]}°, 
-        longitude {location[1]}° at {time_str}.
-        
-        Include the following information:
-        - A welcoming introduction
-        - List of visible planets with their altitude and azimuth
-        - List of visible bright stars with their constellation
-        - List of visible deep sky objects and constellations
-        
-        Use markdown formatting (##, ###, **, *, -).
-        Be concise but informative.
-        
-        Visible planets: {planets}
-        Visible stars: {stars}
-        Visible deep sky objects: {deep_sky}
-        Visible constellations: {constellations}
-        """
+You are Caelum, an engaging astronomy guide. Narrate the currently visible celestial objects for an observer at latitude {location[0]}°, longitude {location[1]}° at {time_str}.
+
+Strict Markdown formatting rules:
+- Organize the response into clear sections using `###` headings with a relevant emoji and **bold title**, separated by blank lines:
+  - `### 🌌 **Sky Overview**` (brief 2-sentence welcome)
+  - `### 🪐 **Visible Planets**` (if any)
+  - `### ⭐ **Bright Stars**` (if any, mention constellation)
+  - `### 🔭 **Deep Sky & Constellations**` (if any)
+- Use bullet points (`- `) for each object and highlight **object names**, **altitude**, and **azimuth** in **bold**.
+- Keep it concise, accurate, and easy to scan. Do not use code blocks.
+
+Visible planets: {planets}
+Visible stars: {stars}
+Visible deep sky objects: {deep_sky}
+Visible constellations: {constellations}
+"""
 
         try:
             response = self.llm.invoke(prompt)
@@ -475,32 +473,30 @@ class CaelumAgent:
             return self._format_visible_objects_simple(sky_data)
 
     def _narrate_object_details(
-        self,
-        object_name: str,
-        obj_type: str,
-        history_data: Dict[str, Any],
-        sky_details: Optional[Dict[str, Any]],
-        is_visible: Optional[bool]
+            self,
+            object_name: str,
+            obj_type: str,
+            history_data: Dict[str, Any],
+            sky_details: Optional[Dict[str, Any]],
+            is_visible: Optional[bool]
     ) -> str:
         """Use LLM to generate a narration about a specific celestial object."""
         prompt = f"""
-        You are an astronomical assistant. Create a beautiful, engaging narration 
-        about {object_name} (type: {obj_type}).
-        
-        Include the following information:
-        - A welcoming introduction about {object_name}
-        - Scientific and astronomical/mythological context about {object_name}
-        - Human exploration history ONLY if missions exist in the history data (skip or briefly note no direct missions for constellations/distant stars)
-        - Current visibility and sky coordinates if available
-        
-        Use markdown formatting (##, ###, **, *, -).
-        Be concise but informative.
-        
-        Object type: {obj_type}
-        Is currently visible: {is_visible}
-        Current sky coordinates: {sky_details}
-        History data: {history_data}
-        """
+You are Caelum, an engaging astronomy guide. Create a concise, captivating narration about **{object_name}** (type: {obj_type}).
+
+Strict Markdown formatting rules:
+- Use `###` headings with a relevant emoji and **bold title**, always separated by blank lines:
+  - `### ✨ **Overview & Significance**` (welcoming intro + scientific/mythological context)
+  - `### 🔭 **Current Visibility**` (visibility status, altitude, azimuth, and distance if available)
+  - `### 🚀 **Human Exploration**` (include ONLY if missions exist in the history data; otherwise briefly note it is studied remotely from Earth/space telescopes)
+- Highlight key facts, numbers, and mission names in **bold**.
+- Keep paragraphs short (2–3 sentences) and use bullet points (`- `) for lists. Do not use code blocks.
+
+Object type: {obj_type}
+Is currently visible: {is_visible}
+Current sky coordinates: {sky_details}
+History data: {history_data}
+"""
 
         try:
             response = self.llm.invoke(prompt)
@@ -511,28 +507,26 @@ class CaelumAgent:
             )
 
     def _narrate_object_history(
-        self,
-        object_name: str,
-        history_data: Dict[str, Any]
+            self,
+            object_name: str,
+            history_data: Dict[str, Any]
     ) -> str:
         """Use LLM to generate a narration about the history of a celestial object."""
         prompt = f"""
-        You are an astronomical assistant. Create a beautiful, engaging narration 
-        about the human exploration history of {object_name}.
-        
-        Focus on:
-        - Space missions that explored {object_name}
-        - Spacecraft involved
-        - Key historical events
-        - Organizations involved
-        
-        If no direct space missions exist in the history data, clearly state that no spacecraft has directly visited {object_name} and briefly share how humanity has studied it from Earth or space telescopes.
-        
-        Use markdown formatting (##, ###, **, *, -).
-        Be concise but informative.
-        
-        History data: {history_data}
-        """
+You are Caelum, a space exploration historian. Narrate the human exploration history of **{object_name}**.
+
+Strict Markdown formatting rules:
+- Use `###` headings with a relevant emoji and **bold title**, always separated by blank lines:
+  - `### 🚀 **Key Space Missions**`
+  - `### 🛰️ **Spacecraft & Milestones**`
+  - `### 🏛️ **Agencies & Organizations**`
+- Highlight **mission names**, **dates**, **spacecraft**, and **agencies** in **bold**.
+- Use bullet points (`- `) for lists and keep paragraphs concise.
+- If no direct space missions exist in the history data, clearly state under `### 🔭 **Observational History**` that no spacecraft has directly visited {object_name} and explain how humanity has studied it via telescopes.
+- Do not use code blocks.
+
+History data: {history_data}
+"""
 
         try:
             response = self.llm.invoke(prompt)

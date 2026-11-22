@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 import { MESSAGES, ACTIONS } from '../utils/constants';
 
 function StoryPanel({ object, storyData, loading, error, coordinates, onQuickAction }) {
@@ -32,8 +33,10 @@ function StoryPanel({ object, storyData, loading, error, coordinates, onQuickAct
     }
 
     if (object.altitude_degrees !== undefined) {
-      parts.push(`**Position:** Altitude ${object.altitude_degrees.toFixed(1)}°, ` +
-                `Azimuth ${object.azimuth_degrees.toFixed(1)}°`);
+      parts.push(
+        `**Position:** Altitude ${object.altitude_degrees.toFixed(1)}°, ` +
+        `Azimuth ${object.azimuth_degrees.toFixed(1)}°`
+      );
       parts.push('');
     }
 
@@ -125,6 +128,35 @@ function StoryPanel({ object, storyData, loading, error, coordinates, onQuickAct
     );
   }
 
+  const markdownComponents = {
+    h2: ({ children }) => (
+      <h2 className="text-base font-bold text-accent-primary mt-3 mb-2 border-b border-white/10 pb-1">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-sm font-bold text-white mt-4 mb-1.5 tracking-wide">
+        {children}
+      </h3>
+    ),
+    p: ({ children }) => (
+      <p className="text-sm text-text-secondary leading-relaxed mb-2.5">
+        {children}
+      </p>
+    ),
+    ul: ({ children }) => (
+      <ul className="list-disc list-inside space-y-1 text-sm text-text-secondary mb-3">
+        {children}
+      </ul>
+    ),
+    li: ({ children }) => (
+      <li className="leading-relaxed">{children}</li>
+    ),
+    strong: ({ children }) => (
+      <strong className="font-semibold text-white">{children}</strong>
+    ),
+  };
+
   return (
     <div className="story-panel h-full flex flex-col">
       {/* Header */}
@@ -177,26 +209,26 @@ function StoryPanel({ object, storyData, loading, error, coordinates, onQuickAct
       {/* Content */}
       <div className="flex-1 overflow-y-auto no-scrollbar">
         {activeTab === 'details' && (
-          <div className="prose prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{
-              __html: formatObjectInfo().replace(/\n/g, '<br />')
-            }} />
+          <div>
+            <ReactMarkdown components={markdownComponents}>
+              {formatObjectInfo()}
+            </ReactMarkdown>
           </div>
         )}
 
         {activeTab === 'history' && (
-          <div className="prose prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{
-              __html: formatHistoryInfo().replace(/\n/g, '<br />')
-            }} />
+          <div>
+            <ReactMarkdown components={markdownComponents}>
+              {formatHistoryInfo()}
+            </ReactMarkdown>
           </div>
         )}
 
         {activeTab === 'narrative' && (
-          <div className="prose prose-invert max-w-none">
-            <div dangerouslySetInnerHTML={{
-              __html: formatNarration().replace(/\n\n/g, '<br /><br />').replace(/\n/g, '<br />')
-            }} />
+          <div>
+            <ReactMarkdown components={markdownComponents}>
+              {formatNarration()}
+            </ReactMarkdown>
           </div>
         )}
       </div>
