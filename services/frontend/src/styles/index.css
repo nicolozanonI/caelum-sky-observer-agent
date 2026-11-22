@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Dark Cosmic Theme */
+@layer base {
+  html {
+    @apply antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply bg-primary text-text-primary;
+    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Card styles for celestial objects */
+  .celestial-card {
+    @apply bg-secondary/50 backdrop-blur-sm border border-white/10 rounded-xl p-4;
+    @apply transition-all duration-300 hover:bg-secondary/70 hover:border-accent-primary/20;
+    @apply cursor-pointer;
+  }
+
+  .celestial-card-planet {
+    @apply border-l-4 border-celestial-planet;
+  }
+
+  .celestial-card-star {
+    @apply border-l-4 border-celestial-star;
+  }
+
+  .celestial-card-deep_sky {
+    @apply border-l-4 border-celestial-deep_sky;
+  }
+
+  .celestial-card-constellation {
+    @apply border-l-4 border-celestial-constellation;
+  }
+
+  /* Dome 3D container */
+  .dome-container {
+    @apply relative w-full h-full overflow-hidden;
+    background: radial-gradient(ellipse at center, #1a1a3a 0%, #0a0a1a 100%);
+  }
+
+  /* Celestial object in dome */
+  .celestial-object {
+    @apply absolute rounded-full;
+    @apply transition-all duration-500;
+    @apply hover:scale-110 hover:brightness-125;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-accent-gold text-primary-100 px-4 py-2 rounded-lg font-medium;
+    @apply hover:bg-yellow-500 transition-colors duration-200;
+    @apply shadow-lg hover:shadow-xl;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary/50 text-text-primary px-4 py-2 rounded-lg font-medium;
+    @apply hover:bg-secondary/70 border border-white/20;
+    @apply transition-colors duration-200;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply bg-secondary/50 border border-white/20 rounded-lg px-4 py-2;
+    @apply text-text-primary placeholder:text-text-secondary;
+    @apply focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20;
+    @apply transition-all duration-200;
+  }
+
+  /* Sidebar styles */
+  .sidebar {
+    @apply bg-secondary/30 backdrop-blur-lg border-r border-white/10;
+    @apply w-80 p-4 overflow-y-auto;
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.white') theme('colors.transparent');
+  }
+  
+  .sidebar::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .sidebar::-webkit-scrollbar-thumb {
+    background-color: theme('colors.white') / 0.2;
+    border-radius: 3px;
+  }
+  
+  .sidebar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Story panel */
+  .story-panel {
+    @apply bg-secondary/30 backdrop-blur-lg rounded-xl p-6;
+    @apply border border-white/10;
+    @apply max-h-[calc(100vh-200px)] overflow-y-auto;
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.white') theme('colors.transparent');
+  }
+  
+  .story-panel::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  .story-panel::-webkit-scrollbar-thumb {
+    background-color: theme('colors.white') / 0.2;
+    border-radius: 3px;
+  }
+  
+  .story-panel::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Header */
+  .header {
+    @apply bg-secondary/50 backdrop-blur-lg border-b border-white/10;
+    @apply px-6 py-4;
+    @apply flex items-center justify-between;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full h-8 w-8 border-4 border-accent-primary border-t-transparent;
+  }
+
+  /* Select dropdown */
+  .select-field {
+    @apply bg-secondary/50 border border-white/20 rounded-lg px-4 py-2;
+    @apply text-text-primary;
+    @apply focus:outline-none focus:border-accent-primary focus:ring-2 focus:ring-accent-primary/20;
+    @apply appearance-none bg-no-repeat bg-right bg-[url('data:image/svg+xml;base64,PHN2ZyBmaWxsPSJibGFjayIgaGVpZ2h0PSIyNCIgd2lkdGg9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0xMCA6SGVsbG88L3BhdGg+PC9zdmc+')] pr-10;
+    @apply cursor-pointer;
+  }
+}
+
+@layer utilities {
+  /* Text glow effect */
+  .text-glow {
+    text-shadow: 0 0 10px theme('colors.accent.primary');
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/5 backdrop-blur-xl;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Pulsing animation for celestial objects */
+  .pulse-celestial {
+    @apply animate-pulse-slow;
+  }
+
+  /* Orbit animation */
+  .animate-orbit {
+    @apply animation-orbit;
+  }
+}

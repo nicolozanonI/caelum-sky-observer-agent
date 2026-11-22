@@ -1,0 +1,8 @@
+fastapi==0.162.7
+uvicorn==0.54.0
+pydantic==2.14.3
+requests==2.34.2
+langchain==0.2.14
+google-genai==0.3.0
+langchain-google-genai==1.0.10
+pytz==2026.6

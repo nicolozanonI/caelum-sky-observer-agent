@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  caelum-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: caelum_frontend
+    ports:
+      - "5173:80"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    restart: unless-stopped
+    networks:
+      - caelum-network

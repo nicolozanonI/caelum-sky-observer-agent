@@ -1,0 +1,203 @@
+{
+  "metadata": {
+    "name": "Caelum Celestial Catalog",
+    "version": "1.0.0",
+    "description": "Curated catalog of natural celestial bodies for astronomical observation",
+    "focus": "Natural celestial bodies only - no artificial satellites",
+    "sources": ["Skyfield", "JPL Ephemeris", "Messier Catalog", "Yale Bright Star Catalog"]
+  },
+  
+  "planets": [
+    {
+      "name": "Mercury",
+      "type": "planet",
+      "magnitude": -0.4,
+      "category": "inferior_planet",
+      "description": "Closest planet to the Sun, visible near sunrise or sunset"
+    },
+    {
+      "name": "Venus",
+      "type": "planet",
+      "magnitude": -4.6,
+      "category": "inferior_planet",
+      "description": "Brightest planet, often visible as morning or evening star"
+    },
+    {
+      "name": "Mars",
+      "type": "planet",
+      "magnitude": -2.9,
+      "category": "superior_planet",
+      "description": "Red planet, visible with reddish hue during oppositions"
+    },
+    {
+      "name": "Jupiter",
+      "type": "planet",
+      "magnitude": -2.9,
+      "category": "superior_planet",
+      "description": "Largest planet, bright and visible with four Galilean moons"
+    },
+    {
+      "name": "Saturn",
+      "type": "planet",
+      "magnitude": 0.7,
+      "category": "superior_planet",
+      "description": "Ringed planet, golden hue, visible to the naked eye"
+    },
+    {
+      "name": "Moon",
+      "type": "natural_satellite",
+      "magnitude": -12.7,
+      "category": "moon",
+      "description": "Earth's natural satellite, brightest object in the night sky"
+    },
+    {
+      "name": "Sun",
+      "type": "star",
+      "magnitude": -26.7,
+      "category": "sun",
+      "description": "Our star, center of the solar system"
+    }
+  ],
+  
+  "stars": [
+    {
+      "name": "Sirius",
+      "ra_hours": 6.7525,
+      "dec_degrees": -16.7161,
+      "magnitude": -1.46,
+      "distance_ly": 8.58,
+      "type": "star",
+      "category": "bright_star",
+      "constellation": "Canis Major",
+      "description": "Brightest star in the night sky, blue-white hue",
+      "spectral_type": "A1V"
+    },
+    {
+      "name": "Betelgeuse",
+      "ra_hours": 5.5519,
+      "dec_degrees": 7.4070,
+      "magnitude": 0.45,
+      "distance_ly": 642.5,
+      "type": "star",
+      "category": "bright_star",
+      "constellation": "Orion",
+      "description": "Red supergiant, one of the largest known stars",
+      "spectral_type": "M1-2Ia"
+    },
+    {
+      "name": "Vega",
+      "ra_hours": 18.3697,
+      "dec_degrees": 38.7837,
+      "magnitude": 0.03,
+      "distance_ly": 25.05,
+      "type": "star",
+      "category": "bright_star",
+      "constellation": "Lyra",
+      "description": "Fifth brightest star, blue-white, summer triangle vertex",
+      "spectral_type": "A0V"
+    },
+    {
+      "name": "Polaris",
+      "ra_hours": 2.5302,
+      "dec_degrees": 89.2641,
+      "magnitude": 1.98,
+      "distance_ly": 433,
+      "type": "star",
+      "category": "bright_star",
+      "constellation": "Ursa Minor",
+      "description": "North Star, used for navigation, Cepheid variable",
+      "spectral_type": "F7Ib-IIv"
+    },
+    {
+      "name": "Arcturus",
+      "ra_hours": 14.1595,
+      "dec_degrees": 19.1824,
+      "magnitude": -0.05,
+      "distance_ly": 36.7,
+      "type": "star",
+      "category": "bright_star",
+      "constellation": "Bootes",
+      "description": "Fourth brightest star, orange-red hue",
+      "spectral_type": "K1.5III"
+    }
+  ],
+  
+  "deep_sky": [
+    {
+      "name": "Andromeda Galaxy",
+      "messier": "M31",
+      "ra_hours": 0.6833,
+      "dec_degrees": 41.2692,
+      "magnitude": 3.4,
+      "distance_ly": 2540000,
+      "type": "galaxy",
+      "category": "spiral_galaxy",
+      "constellation": "Andromeda",
+      "description": "Closest major galaxy to Milky Way, visible to naked eye",
+      "size_arcmin": 190
+    },
+    {
+      "name": "Orion Nebula",
+      "messier": "M42",
+      "ra_hours": 5.3535,
+      "dec_degrees": -5.3911,
+      "magnitude": 4.0,
+      "distance_ly": 1344,
+      "type": "nebula",
+      "category": "emission_nebula",
+      "constellation": "Orion",
+      "description": "Bright diffuse nebula, stellar nursery",
+      "size_arcmin": 85
+    },
+    {
+      "name": "Pleiades",
+      "messier": "M45",
+      "ra_hours": 3.4892,
+      "dec_degrees": 24.0817,
+      "magnitude": 1.6,
+      "distance_ly": 444,
+      "type": "star_cluster",
+      "category": "open_cluster",
+      "constellation": "Taurus",
+      "description": "Seven Sisters, prominent open cluster visible to naked eye",
+      "size_arcmin": 110,
+      "stars_count": 1000
+    }
+  ],
+  
+  "constellations": [
+    {
+      "name": "Orion",
+      "abbreviation": "Ori",
+      "ra_hours": 5.5,
+      "dec_degrees": 5.0,
+      "type": "constellation",
+      "category": "constellation",
+      "description": "Prominent constellation with Betelgeuse, Rigel, and Orion Nebula",
+      "visible_seasons": ["winter"],
+      "hemisphere": "both"
+    },
+    {
+      "name": "Ursa Major",
+      "abbreviation": "UMa",
+      "ra_hours": 10.7,
+      "dec_degrees": 55.0,
+      "type": "constellation",
+      "category": "constellation",
+      "description": "Great Bear, contains Big Dipper asterism",
+      "visible_seasons": ["spring", "summer"],
+      "hemisphere": "north"
+    },
+    {
+      "name": "Cassiopeia",
+      "abbreviation": "Cas",
+      "ra_hours": 1.0,
+      "dec_degrees": 60.0,
+      "type": "constellation",
+      "category": "constellation",
+      "description": "Queen constellation, W-shaped asterism",
+      "visible_seasons": ["fall", "winter"],
+      "hemisphere": "north"
+    }
+  ]
+}

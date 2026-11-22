@@ -1,0 +1,7 @@
+fastapi==0.162.7
+uvicorn==0.54.0
+pydantic==2.14.3
+skyfield==1.55
+numpy==2.4.6
+pytz==2026.6
+requests==2.34.2

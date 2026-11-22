@@ -1,0 +1,3 @@
+"""
+Skyfield service application package.
+"""
